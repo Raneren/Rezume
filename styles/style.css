@@ -1,0 +1,290 @@
+/*Импорт гугл шрифта*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.page {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background: #191919;
+  color: #fff;
+}
+.link {
+  text-decoration: none;
+}
+/*Стили меню*/
+.menu {
+  position: relative;
+  align-self: center;
+}
+.menu__link {
+  margin: 0 20px;
+  font-size: 20px;
+  line-height: 80px;
+  color: #fff;
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+.menu__link:hover,
+.menu__link_active {
+  opacity: 1;
+}
+/*Мобильное меню*/
+#menu_active {
+  display: none;
+}
+.menu__line::before,
+.menu__line::after,
+.menu__line {
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: #fff;
+  transition: 0.2s ease-in;
+}
+.label {
+  display: none;
+  position: relative;
+  height: 60px;
+  width: 150px;
+}
+.menu__line {
+  top: 33%;
+  left: 33%;
+}
+.menu__line::before {
+  content: "";
+  top: -12px;
+}
+.menu__line::after {
+  content: "";
+  top: 12px;
+}
+#menu_active:checked ~ .label .menu__line {
+  background-color: #000;
+}
+#menu_active:checked ~ .label .menu__line::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+#menu_active:checked + .label .menu__line::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+#menu_active:checked ~ .menu__link {
+  display: block;
+}
+.content {
+  margin-top: 100px;
+}
+
+/*Главная*/
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__header {
+  text-align: left;
+  width: 70%;
+  font-size: 35px;
+  line-height: 1.5;
+}
+.main__animation {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.triangle {
+  position: absolute;
+  animation: rotation linear 30s infinite;
+}
+.triangle-blue {
+  top: 0;
+  right: 0;
+  width: 700px;
+}
+.triangle-gray {
+bottom: 0;
+left: 0;
+}
+
+/*Обо мне*/
+.section_about-me {
+  display: flex;
+  justify-content: center;
+}
+.about-me {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+}
+.about-me__photo {
+  border-radius: 50%;
+  flex-basis: 30%;
+  min-width: 250px;
+  min-height: 250px;
+  margin: 15px;
+}
+
+.about-me__info {
+ flex-basis: 70%;
+  font-size: 20px;
+  line-height: 1.3;
+}
+/*Стили проектов*/
+.section_projects {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.project {
+  position: relative;
+  width: 40%;
+  min-width: 600px;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.project__info {
+  height: 100%;
+  width: 100%;
+
+  text-align: center;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  opacity: 0;
+  transition: ease-in 0.4s;
+}
+.project__image {
+  transition: ease-in 0.4s;
+}
+.project__header {
+  font-size: 30px;
+  font-weight: 600;
+}
+.project__link {
+  color: #fff;
+  font-size: 16px;
+  border: 1px solid #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 150px;
+  transition: ease-in 0.2s;
+}
+.project__link:hover {
+  transform: scale(1.1);
+}
+.project:hover .project__image {
+  filter: blur(25px);
+  opacity: 0.7;
+}
+.project:hover .project__info {
+  opacity: 1;
+}
+/*Кнопки слайдера*/
+.slider__buttons {
+  position: absolute;
+  bottom: 3%;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  display: none;
+  text-align: center;
+}
+.button {
+  z-index: 1;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100px;
+  opacity: 0.8;
+}
+.arrow {
+  font-size: 30px;
+  padding: 2px 0;
+  display: block;
+  transition: ease-in 0.4s;
+}
+.button:hover {
+  opacity: 1;
+}
+.button_prev:hover .arrow {
+  transform: translate(-5px, 0);
+}
+.button_next:hover .arrow {
+  transform: translate(5px, 0);
+}
+/*Ссылки*/
+.icon {
+  width: 40px;
+  height: 40px;
+}
+.link_social {
+  opacity: 0.5;
+  transition: ease-in 0.2s;
+}
+.link_social:hover {
+  opacity: 1;
+}
+/*Адаптация*/
+@media screen and (max-width: 600px) {
+  .menu_mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .menu_mobile:hover {
+    background: rgba(0, 0, 0, 1);
+    transition: 0.4s ease-in;
+  }
+  .label {
+    display: flex;
+  }
+  .menu__link {
+    line-height: 2;
+    display: none;
+  }
+}
+@media screen and (max-width: 800px) {
+    .about-me {
+        flex-wrap: wrap;
+    }
+    .content {
+    margin-top: 65px;
+  }
+  .project {
+    width: 85%;
+    min-width: 350px;
+    display: none;
+  }
+  .project_showed {
+    display: flex;
+  }
+  .slider__buttons {
+    display: flex;
+  }
+}
